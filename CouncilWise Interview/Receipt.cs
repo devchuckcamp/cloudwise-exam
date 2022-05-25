@@ -1,9 +1,8 @@
 ﻿using System;
-using System.IO;
-using System.Collections.Generic;
 using System.Text;
-using System.Xml.Serialization;
-using Newtonsoft.Json;
+using System.Collections.Generic;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace CouncilWise
 {
@@ -11,6 +10,7 @@ namespace CouncilWise
     {
         public ICollection<ReceiptItem> Items { get; set; }
         public decimal Total { get; set; }
+        [JsonPropertyName("GST")]
         public decimal TaxTotal { get; set; }
     }
 }

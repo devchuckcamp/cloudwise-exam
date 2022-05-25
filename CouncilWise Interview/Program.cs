@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using Newtonsoft.Json;
-using System.Xml;
-using System.Xml.Serialization;
-using System.IO;
+using System.Text.Json;
+
 
 namespace CouncilWise
 {
@@ -75,7 +73,7 @@ namespace CouncilWise
         /// </summary>
         /// <param name="items"></param>
         /// <returns>processed receipt</returns>
-        static Object ProcessReceiptItems(List<ReceiptItem> items)
+        static object ProcessReceiptItems(List<ReceiptItem> items)
         {
             Receipt receipt = new Receipt();
          
@@ -108,7 +106,12 @@ namespace CouncilWise
 
             
             receipt.Items = taxed_items;
-            var receiptJSON = JsonConvert.SerializeObject(receipt);
+            JsonSerializerOptions options = new()
+            {
+                IgnoreReadOnlyProperties = true,
+                WriteIndented = false
+            };
+            string receiptJSON = System.Text.Json.JsonSerializer.Serialize<Receipt>(receipt, options);
             return receiptJSON;
         }
     }
