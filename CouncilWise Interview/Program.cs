@@ -104,7 +104,7 @@ namespace CouncilWise
                     receipt.Total += item.TotalIncTax;
                 }
                 taxed_items.Add(new ReceiptItem { Name = item.Name, Quantity = item.Quantity, UnitPrice = item.UnitPrice, TotalIncTax = item.TotalIncTax });
-
+            }
 
             
             receipt.Items = taxed_items;
