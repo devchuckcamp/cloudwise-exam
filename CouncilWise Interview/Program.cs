@@ -106,8 +106,7 @@ namespace CouncilWise
                 taxed_items.Add(new ReceiptItem { Name = item.Name, Quantity = item.Quantity, UnitPrice = item.UnitPrice, TotalIncTax = item.TotalIncTax });
 
 
-            }
-
+            
             receipt.Items = taxed_items;
             var receiptJSON = JsonConvert.SerializeObject(receipt);
             return receiptJSON;
